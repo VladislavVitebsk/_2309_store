@@ -1,5 +1,4 @@
 package by.itclass.controllers.user;
-
 import by.itclass.controllers.AbstractController;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -10,18 +9,16 @@ import java.io.IOException;
 
 import static by.itclass.constants.AppConst.*;
 
-@WebServlet(LOGIN_CONTROLLER)
-public class LoginController extends AbstractController {
+@WebServlet(CHANGE_CONTROLLER)
+public class UpdateController extends AbstractController {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        var login = req.getParameter(LOGIN_PARAM);
-        var password = req.getParameter(PASS_PARAM);
-        var user = userService.getUser(login, password);
-        if (user != null) {
-            req.getSession().setAttribute(USER_ATTR, user);
-            forward(req, resp, HOME_JSP);
+        var id = Integer.parseInt(req.getParameter(ID_PARAM));
+        var pass = req.getParameter(PASS_PARAM);
+        if (userService.changePassword(id, pass)) {
+            redirect(resp, LOGIN_JSP);
         } else {
-            forward(req, resp, LOGIN_JSP, "User not found");
+            forward(req, resp, SET_PASS_JSP, "Change Pass is not successfully");
         }
     }
 }

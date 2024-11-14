@@ -1,5 +1,4 @@
 package by.itclass.controllers;
-
 import by.itclass.model.services.UserService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -32,5 +31,9 @@ public abstract class AbstractController extends HttpServlet {
                            String url, String message) throws ServletException, IOException {
         req.setAttribute(MESSAGE_ATTR, message);
         req.getRequestDispatcher(url).forward(req, resp);
+    }
+
+    protected void redirect(HttpServletResponse resp, String url) throws IOException {
+        resp.sendRedirect(url);
     }
 }
