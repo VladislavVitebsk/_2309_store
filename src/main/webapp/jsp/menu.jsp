@@ -18,6 +18,10 @@
                 <a href="<%=SET_PASS_JSP%>">Change Password</a></li>
             <li class="nav-li float-left">
                 <a href="<%=TV_CONTROLLER%>">TV</a></li>
+            <li class="nav-li float-left">
+                <a href="<%=LOGIN_CONTROLLER%>">Laptop</a></li>
+            <li class="nav-li">
+                <a href="<%=CART_JSP%>">Cart</a></li>
         </c:otherwise>
     </c:choose>
 </ul>
