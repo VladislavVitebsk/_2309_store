@@ -12,7 +12,7 @@
     <jsp:include page="<%=MENU_JSP%>"/>
     <jsp:include page="<%=TV_FILTER%>"/>
     <c:choose>
-        <c:when test="$[not empty tvs]">
+        <c:when test="${not empty tvs}">
             <c:forEach var="tv" items="${tvs}">
                 <div class="item-box">
                     <img class="small-img" src="/img/tv/${tv.vendor}-${tv.model}.jpg">
@@ -26,7 +26,7 @@
                         <input type="hidden" name="<%=ITEM_VENDOR_PARAM%>" value="${tv.vendor}">
                         <input type="hidden" name="<%=ITEM_MODEL_PARAM%>" value="${tv.model}">
                         <input type="hidden" name="<%=ITEM_PRICE_PARAM%>" value="${tv.price}">
-                        <input type="hidden" name="<%=QUANTITY_PARAM%>" value="${tv.quantity}">
+                        <input type="hidden" name="<%=QUANTITY_PARAM%>" value="1">
                         <input type="submit" value="Add toCart">
                     </form>
                 </div>

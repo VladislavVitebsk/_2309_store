@@ -35,6 +35,7 @@ public class CartController extends AbstractController {
             redirect(resp, CART_JSP);
         }
     }
+
     private void redirectToProductPage(HttpServletResponse resp, int itemType) throws IOException {
         switch (itemType){
             case 1 -> redirect(resp, TV_CONTROLLER);

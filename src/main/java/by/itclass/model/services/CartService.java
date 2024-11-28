@@ -2,6 +2,7 @@ package by.itclass.model.services;
 
 import by.itclass.model.entities.OrderItem;
 import jakarta.servlet.http.HttpSession;
+import org.eclipse.tags.shaded.org.apache.xpath.operations.Or;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,16 @@ public class CartService {
         switch (cartAction) {
             case "add" -> items.add(item);
             case "remove" -> items.remove(item);
+//            case "increase" -> items.forEach(it -> changePurchase(it, item, true));
+//            case "decrease" -> items.forEach(it -> changePurchase(it, item, true));
+            case "change" -> items.forEach(it -> setPurchase(it, item));
+
         }
         return items;
+    }
+    private  void setPurchase(OrderItem sourceItem, OrderItem changeItem){
+        if (sourceItem.equals(changeItem)){
+            sourceItem.setQuantity(changeItem.getQuantity());
+        }
     }
 }
